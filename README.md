@@ -71,11 +71,11 @@ var argv = require('yargs')
 console.log("The area is:", argv.w * argv.h);
 ```
 
-
 ```
 $ node src/app/area.js -w 55 -h 11
 $ node src/app/area.js -w=55 -h=11
 ```
+
 
 # Required Non-Hyphenated Args
 demand_count.js
@@ -93,5 +93,69 @@ $ node src/app/demand_count.js a b c
 ```
 
 
+# Set default Values
+// default_singles.js
+Adds or concats to original default values
+```
+$ node src/app/default_singles -x 5
+// 15 
+```
+
+
+# Default Hash Object
+// default_hash.js
+```
+$ node src/app/default_hash -y 7
+// 17
+```
+
+
+# More Booleans
+// boolean_single.js
+```
+#!/usr/bin/env node
+var argv = require('yargs')
+    .boolean('v')
+    .argv
+;
+console.dir(argv.v);
+console.dir(argv._);
+```
+
+```
+$ node src/app/boolean_single -v "me hearties" yo ho
+true
+// [ 'me hearties', 'yo', 'ho' ]
+```
+
+
+// boolean_double.js
+```
+#!/usr/bin/env node
+var argv = require('yargs')
+    .boolean(['x','y','z'])
+    .argv
+;
+console.dir([ argv.x, argv.y, argv.z ]);
+console.dir(argv._);
+```
+
+```
+$ node src/app/boolean_double -x -z one two three
+// [ true, false, true ]
+// [ 'one', 'two', 'three' ]
+```
+
+
+## Real Demos
+# Count Number of Lines in a File
+// line_count.js
+```
+$ node src/app/line_count -f src/app/count.js
+// 27
+$ node src/app/line_count --file src/app/count.js
+// 27
+
+```
 
 
