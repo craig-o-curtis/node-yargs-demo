@@ -17,10 +17,10 @@ INFO("Showing semi-important stuff too");
 DEBUG("Extra chatty mode");
 
 /*
-$ node src/app/count.js
-$ node src/app/count.js -v
-$ node src/app/count.js -vv
-$ node src/app/count.js -v --verbose
+$ node src/app/count
+$ node src/app/count -v
+$ node src/app/count -vv
+$ node src/app/count -v --verbose
 */
 
 
