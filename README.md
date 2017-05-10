@@ -6,6 +6,9 @@ Run code
 $ node src/app
 ```
 
+Note - 
+#!/usr/bin/env node is an instance of a shebang line: the very first line in an executable plain-text file on Unix-like platforms that tells the system what interpreter to pass that file to for execution, via the command line following the magic #! prefix (called shebang). -- http://stackoverflow.com/questions/33509816/what-exactly-does-usr-bin-env-node-do-at-the-beginning-of-node-files
+
 # Specifying Params
 plunder.js
 ```
@@ -56,7 +59,7 @@ $ node src/app/count -v --verbose
 
 
 # Required Params
-required.js
+area.js
 In the code, chain .demandOption(['x','y']).argv
 ```
 #!/usr/bin/env node
@@ -70,8 +73,25 @@ console.log("The area is:", argv.w * argv.h);
 
 
 ```
-$ node src/app/required.js -w 55 -h 11
-$ node src/app/required.js -w=55 -h=11
+$ node src/app/area.js -w 55 -h 11
+$ node src/app/area.js -w=55 -h=11
 ```
+
+# Required Non-Hyphenated Args
+demand_count.js
+// illustrates demandCommand(int) as number of required non-hyph args
+```
+$ node src/app/demand_count a
+// Not enough non-option arguments: got 1, need at least 2
+
+$ node src/app/demand_count a b
+// { _: [ 'a', 'b' ], '$0': 'demand_count.js' }
+
+$ node src/app/demand_count.js a b c
+// { _: [ 'a', 'b', 'c' ], '$0': 'demand_count.js' }
+
+```
+
+
 
 
